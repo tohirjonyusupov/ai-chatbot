@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm'
 import { Message } from '@/types/chat'
 import { formatTime } from '@/lib/utils'
 import { FileText } from 'lucide-react'
+import { log } from 'node:console'
 
 interface Props {
   message: Message
@@ -12,6 +13,7 @@ interface Props {
 
 export default function MessageBubble({ message }: Props) {
   const isUser = message.role === 'user'
+  // console.log('Rendering message:', message) // Debug log to check message content
 
   return (
     <div
@@ -63,7 +65,7 @@ export default function MessageBubble({ message }: Props) {
         </div>
 
         {/* Sources */}
-        {message.sources && message.sources.length > 0 && (
+        {/* {message.sources && message.sources.length > 0 && (
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 2 }}>
             {message.sources.map((src, i) => (
               <div
@@ -90,7 +92,7 @@ export default function MessageBubble({ message }: Props) {
               </div>
             ))}
           </div>
-        )}
+        )} */}
 
         {/* Timestamp */}
         <span

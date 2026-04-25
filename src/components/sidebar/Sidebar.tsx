@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import { useChatStore } from '@/store/useChatStore'
-import { getHistory } from '@/lib/api'
+// import { getHistory } from '@/lib/api'
 import { Sun, Moon, PenSquare, ChevronLeft } from 'lucide-react'
 import FileUpload from './FileUpload'
 import HistoryList from './HistoryList'
@@ -11,11 +11,11 @@ export default function Sidebar() {
   const { theme, toggleTheme, clearChat, isSidebarOpen, toggleSidebar, setConversations } =
     useChatStore()
 
-  useEffect(() => {
-    getHistory()
-      .then((res) => setConversations(res.conversations))
-      .catch(() => {})
-  }, [setConversations])
+  // useEffect(() => {
+  //   getHistory()
+  //     .then((res) => setConversations(res.conversations))
+  //     .catch(() => {})
+  // }, [setConversations])
 
   if (!isSidebarOpen) return null
 
@@ -81,7 +81,7 @@ export default function Sidebar() {
       </div>
 
       {/* History */}
-      <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+      {/* <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
         <p
           style={{
             fontSize: 11,
@@ -97,13 +97,15 @@ export default function Sidebar() {
         <div style={{ flex: 1, overflowY: 'auto', padding: '0 4px 12px' }}>
           <HistoryList />
         </div>
-      </div>
+      </div> */}
 
       {/* Footer */}
       <div
         style={{
           padding: '10px 16px',
           borderTop: '0.5px solid var(--border)',
+          position: 'fixed',
+          bottom: '0'
         }}
       >
         <p style={{ fontSize: 10, color: 'var(--text-tertiary)' }}>

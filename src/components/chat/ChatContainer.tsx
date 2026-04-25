@@ -45,28 +45,27 @@ export default function ChatContainer() {
     try {
       abortRef.current = new AbortController()
       const res = await sendMessage({
-        message: text,
-        conversation_id: conversationId || undefined,
+        question: text,
       })
 
       const assistantMsg: Message = {
         id: generateId(),
         role: 'assistant',
         content: res.answer,
-        createdAt: res.createdAt || new Date().toISOString(),
-        sources: res.sources,
+        createdAt: new Date().toISOString(),
       }
+      console.log('Received response:', res) // Debug log to check response content
       addMessage(assistantMsg)
 
-      if (!conversationId) {
-        setConversationId(res.conversation_id)
-        addConversation({
-          id: res.conversation_id,
-          title: text.slice(0, 60),
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-        })
-      }
+      // if (!conversationId) {
+      //   setConversationId(res.conversation_id)
+      //   addConversation({
+      //     id: res.conversation_id,
+      //     title: text.slice(0, 60),
+      //     createdAt: new Date().toISOString(),
+      //     updatedAt: new Date().toISOString(),
+      //   })
+      // }
     } catch (err: unknown) {
       if (err instanceof Error && err.name === 'AbortError') return
       setError('Failed to get a response. Please try again.')
@@ -114,6 +113,7 @@ export default function ChatContainer() {
 
           {messages.map((msg) => (
             <MessageBubble key={msg.id} message={msg} />
+            // console={msg}
           ))}
 
           {isLoading && <TypingIndicator />}
@@ -210,9 +210,9 @@ function EmptyState() {
           maxWidth: 520,
         }}
       >
-        {suggestions.map((s, i) => (
+        {/* {suggestions.map((s, i) => (
           <SuggestionCard key={i} text={s} />
-        ))}
+        ))} */}
       </div>
     </div>
   )

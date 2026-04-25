@@ -5,7 +5,6 @@ export interface Message {
   role: Role
   content: string
   createdAt: string
-  sources?: Source[]
 }
 
 export interface Source {
@@ -31,16 +30,13 @@ export interface UploadedFile {
 }
 
 export interface ChatRequest {
-  message: string
-  conversation_id?: string
+  question: string
 }
 
 export interface ChatResponse {
-  id: string
+  question: string
   answer: string
-  conversation_id: string
-  sources?: Source[]
-  createdAt: string
+  lang: string
 }
 
 export interface HistoryResponse {

@@ -1,6 +1,6 @@
 import { ChatRequest, ChatResponse, HistoryResponse, UploadResponse } from '@/types/chat'
 
-const BASE = '/api'
+const BASE = 'http://46.101.122.36'
 
 async function handleResponse<T>(res: Response): Promise<T> {
   if (!res.ok) {
@@ -11,7 +11,7 @@ async function handleResponse<T>(res: Response): Promise<T> {
 }
 
 export async function sendMessage(payload: ChatRequest): Promise<ChatResponse> {
-  const res = await fetch(`${BASE}/chat`, {
+  const res = await fetch(`${BASE}/ask`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
@@ -19,10 +19,10 @@ export async function sendMessage(payload: ChatRequest): Promise<ChatResponse> {
   return handleResponse<ChatResponse>(res)
 }
 
-export async function getHistory(): Promise<HistoryResponse> {
-  const res = await fetch(`${BASE}/history`)
-  return handleResponse<HistoryResponse>(res)
-}
+// export async function getHistory(): Promise<HistoryResponse> {
+//   const res = await fetch(`${BASE}/history`)
+//   return handleResponse<HistoryResponse>(res)
+// }
 
 export async function uploadFile(
   file: File,
