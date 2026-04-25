@@ -11,7 +11,7 @@ async function handleResponse<T>(res: Response): Promise<T> {
 }
 
 export async function sendMessage(payload: ChatRequest): Promise<ChatResponse> {
-  const res = await fetch(`${BASE}/ask`, {
+  const res = await fetch(`${BASE}/ask/uz`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
