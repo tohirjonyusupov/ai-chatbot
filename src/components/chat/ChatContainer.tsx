@@ -5,10 +5,10 @@ import { useChatStore } from '@/store/useChatStore'
 import { sendMessage } from '@/lib/api'
 import { generateId } from '@/lib/utils'
 import { Message } from '@/types/chat'
-import MessageBubble from './MessageBubble'
 import TypingIndicator from './TypingIndicator'
 import ChatInput from './ChatInput'
 import { MessageSquare } from 'lucide-react'
+import MessageBubble from './MessageBubble'
 
 export default function ChatContainer() {
   const {

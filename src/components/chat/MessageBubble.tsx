@@ -5,7 +5,6 @@ import remarkGfm from 'remark-gfm'
 import { Message } from '@/types/chat'
 import { formatTime } from '@/lib/utils'
 import { FileText } from 'lucide-react'
-import { log } from 'node:console'
 
 interface Props {
   message: Message
