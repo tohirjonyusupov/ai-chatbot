@@ -8,7 +8,7 @@ import { Message } from '@/types/chat'
 import TypingIndicator from './TypingIndicator'
 import ChatInput from './ChatInput'
 import { MessageSquare } from 'lucide-react'
-import MessageBubble from './MessageBubble'
+import MessageBubble from '../chat/MessageBubble'
 
 export default function ChatContainer() {
   const {
